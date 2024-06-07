@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Next.js CRUD Application
 
-First, run the development server:
+This is a simple CRUD (Create, Read, Update, Delete) application built with Next.js. It uses MongoDB for data storage and demonstrates how to perform basic CRUD operations using Next.js API routes.
 
-```bash
+## Table of Contents
+
+- [Demo](#demo)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Routes](#api-routes)
+- [Authors](#authors)
+- [License](#license)
+
+## Demo
+
+Check out the live demo of the application: [Demo Link](https://your-demo-link.com)
+
+## Features
+
+- Create a new topic
+- Read and display all topics
+- Update an existing topic
+- Delete a topic
+
+## Installation
+
+To get started with the application, follow these steps:
+
+1. **Clone the repository:**
+
+   \`\`\`bash
+   git clone https://github.com/your-username/your-repo-name.git
+   \`\`\`
+
+2. **Navigate to the project directory:**
+
+   \`\`\`bash
+   cd your-repo-name
+   \`\`\`
+
+3. **Install the dependencies:**
+
+   \`\`\`bash
+   npm install
+   \`\`\`
+
+4. **Set up environment variables:**
+
+   Create a \`.env.local\` file in the root of your project and add your MongoDB URI:
+
+   \`\`\`env
+   MONGODB_URI=mongodb://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority
+   \`\`\`
+
+## Usage
+
+To run the application locally, use the following command:
+
+\`\`\`bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the development server on \`http://localhost:3000\`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## API Routes
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Create a Topic
 
-## Learn More
+**Endpoint:** \`POST /api/topics\`
 
-To learn more about Next.js, take a look at the following resources:
+**Body:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+\`\`\`json
+{
+  "title": "Sample Topic",
+  "description": "This is a sample topic description."
+}
+\`\`\`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Get All Topics
 
-## Deploy on Vercel
+**Endpoint:** \`GET /api/topics\`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Get a Topic by ID
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Endpoint:** \`GET /api/topics/[id]\`
+
+### Update a Topic
+
+**Endpoint:** \`PUT /api/topics/[id]\`
+
+**Body:**
+
+\`\`\`json
+{
+  "newTitle": "Updated Topic",
+  "newDescription": "This is an updated topic description."
+}
+\`\`\`
+
+### Delete a Topic
+
+**Endpoint:** \`DELETE /api/topics/[id]\`
+
+## Authors
+
+- [Your Name](https://github.com/sajithnsilvame)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
