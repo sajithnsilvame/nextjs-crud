@@ -16,7 +16,8 @@ const getTopics = async () =>{
 
   }
   catch(error){
-    console.log(error)
+    console.error("Error fetching topics:", error); // Log error for debugging
+    return { error: "Failed to fetch topics. Please try again later." }; // Return an error object
   }
 }
 

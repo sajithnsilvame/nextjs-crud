@@ -35,8 +35,9 @@ const AddTopic = () => {
         throw new Error("Something went wrong");
       }
       
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.error("Error creating topic:", error); // Log error for debugging
+      return { error: "Failed to create topic. Please try again later." }; // Return an error object
     }
   };
 

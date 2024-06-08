@@ -15,7 +15,8 @@ const getTopicById = async (id) => {
 
     return res.json();
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching topic:", error); // Log error for debugging
+    return { error: "Failed to fetch topic. Please try again later." }; // Return an error object
   }
 };
 

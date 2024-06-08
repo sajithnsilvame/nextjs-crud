@@ -31,7 +31,8 @@ const EditTopicForm = ({ id, title, description }) => {
       router.push("/");
       router.refresh();
     } catch (error) {
-      console.log(error);
+      console.error("Error updating topic:", error); // Log error for debugging
+      return { error: "Failed to update topic. Please try again later." }; // Return an error object
     }
   };
 
