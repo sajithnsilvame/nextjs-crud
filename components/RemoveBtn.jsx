@@ -8,7 +8,7 @@ const RemoveBtn = ({ id }) => {
     const isConfirmed = confirm("Are you sure you want to remove");
     if (isConfirmed) {
       const response = await fetch(
-        `http://localhost:3000/api/topics?id=${id}`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/topics?id=${id}`,
         {
           method: "DELETE",
         }

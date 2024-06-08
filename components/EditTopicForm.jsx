@@ -11,21 +11,25 @@ const EditTopicForm = ({ id, title, description }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/api/topics/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          newTitle,
-          newDescription,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/topics/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            newTitle,
+            newDescription,
+          }),
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to uppdate");
       }
-      router.refresh();
+      
       router.push("/");
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
