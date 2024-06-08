@@ -1,26 +1,32 @@
 import Link from "next/link";
 import RemoveBtn from "./RemoveBtn";
-import {HiPencilAlt} from "react-icons/hi"
+import { HiPencilAlt } from "react-icons/hi";
 
-const getTopics = async () =>{
-  try{
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/topics`);
+const getTopics = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/topics`,
+      {
+        cache: "no-store",
+      }
+    );
 
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error(response.statusText);
     }
 
     return response.json();
-
-  }
-  catch(error){
+  } catch (error) {
     console.error("Error fetching topics:", error); // Log error for debugging
     return { error: "Failed to fetch topics. Please try again later." }; // Return an error object
   }
-}
+};
 
 const TopicList = async () => {
-  const {topics} = await getTopics();
+  const { topics } = await getTopics();
+  if (!topics || topics.length === 0) {
+    return <div>No any Topics</div>; // Display message when there are no topics
+  }
   return (
     <>
       {topics.map((topic) => (
@@ -42,6 +48,6 @@ const TopicList = async () => {
       ))}
     </>
   );
-}
+};
 
-export default TopicList
+export default TopicList;

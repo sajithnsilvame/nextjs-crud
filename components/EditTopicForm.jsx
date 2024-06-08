@@ -27,7 +27,7 @@ const EditTopicForm = ({ id, title, description }) => {
       if (!response.ok) {
         throw new Error("Failed to uppdate");
       }
-      
+
       router.push("/");
       router.refresh();
     } catch (error) {
